@@ -3,6 +3,7 @@
 
 This is a small project to demonstrate how to build a powerful but totally on frontend side with almost basic features.
 The most painful combination is Gatsby + Firebase + Apollo Client.
+This project works perfectly when using [Hasura](https://hasura.io/) as a backend solution.
 
 ## Related Technologies
 
