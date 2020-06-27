@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/babel",
+    "prettier/react"
+  ],
+  "rules": {
+    "strict": 0,
+    "no-console": 1,
+    "react/prop-types": 0
+  },
+  "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": require('./package.json').dependencies.react
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}
