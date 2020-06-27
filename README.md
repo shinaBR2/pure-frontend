@@ -2,7 +2,7 @@
 # Pure Frontend Project
 
 This is a small project to demonstrate how to build a powerful but totally on frontend side with almost basic features.
-The most paintful combination is Gatsby + Firebase + Apollo Client.
+The most painful combination is Gatsby + Firebase + Apollo Client.
 
 ## Related Technologies
 
