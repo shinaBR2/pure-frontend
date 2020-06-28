@@ -2,7 +2,8 @@
 # Pure Frontend Project
 
 This is a small project to demonstrate how to build a powerful but totally on frontend side with almost basic features.
-The most paintful combination is Gatsby + Firebase + Apollo Client.
+The most painful combination is Gatsby + Firebase + Apollo Client.
+This project works perfectly when using [Hasura](https://hasura.io/) as a backend solution.
 
 ## Related Technologies
 
@@ -23,6 +24,7 @@ The most paintful combination is Gatsby + Firebase + Apollo Client.
 
 ## Structure Explaination
 
+```
 .
 +-- README.md
 +-- gatsby-browser.js
@@ -44,6 +46,7 @@ The most paintful combination is Gatsby + Firebase + Apollo Client.
 |     +-- apollo.js
 |     +-- firebase.js
 |     +-- root.js
+```
 
 There are some important files are:
 + `src/root.js`: this is where we should start from, wrap all React inside a Provider via React Context with included Firebase and Apollo Client. `wrapRootElement` of Gatsby would be defined here, too.
