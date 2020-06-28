@@ -56,4 +56,6 @@ export default IndexPage;
 ```
 
 - Run `gatsby build` and then `gatsby serve`.
-- Look into [Google Analytics dashboard](https://analytics.google.com/) to see the changes.
+- Look into [Google Analytics dashboard](https://analytics.google.com/) to see the changes like below
+![GA dashboard](https://github.com/shinaBR2/pure-frontend/blob/feature/2--tracking/docs/google-analytics/GA-event-test.PNG)
+
