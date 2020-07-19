@@ -43,10 +43,6 @@ class RootElement extends React.Component {
 
   render = () => {
     const { firebase, user } = this.state;
-    if (!firebase) {
-      // For sure all thing need to be render only on client side
-      return null;
-    }
 
     return (
       <FirebaseContext.Provider value={{ firebase, user }}>
