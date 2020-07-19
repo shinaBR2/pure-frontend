@@ -1,20 +1,22 @@
 // Initialize dotenv
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}` // or '.env'
-});
+// require('dotenv').config({
+//   path: `.env.${process.env.NODE_ENV}` // or '.env'
+// });
 
 // And then you can use the config in gatsby-config.js
-const config = require('gatsby-plugin-config').default;
+// const config = require('gatsby-plugin-config').default;
 
 const siteMetadata = {
   title: 'pure-frontend - Powerful project with just pure frontend techniques.',
   author: 'ShinaBR2',
-  description: 'Powerful project with just pure frontend techniques.'
+  description: 'Powerful project with just pure frontend techniques.',
+  titleTemplate: '%s · pure-frontend',
+  url: 'https://github.com/shinaBR2/pure-frontend/',
+  image: 'src/assets/images/share.png',
+  twitterUsername: 'ShinaBR2'
 };
 
-const formatPlugins = [
-  'gatsby-plugin-eslint'
-];
+const formatPlugins = ['gatsby-plugin-eslint'];
 
 const PWAPlugins = [
   {
@@ -38,7 +40,6 @@ const imagePlugins = ['gatsby-transformer-sharp', 'gatsby-plugin-sharp'];
 
 const stylePlugins = ['gatsby-plugin-sass'];
 
-
 const multiLangPlugin = [
   {
     resolve: `gatsby-plugin-intl`,
@@ -50,7 +51,6 @@ const multiLangPlugin = [
     }
   }
 ];
-
 
 module.exports = {
   siteMetadata,

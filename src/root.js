@@ -2,7 +2,9 @@ import React from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import getFirebase from './firebase';
 import { ApolloProvider } from '@apollo/react-hooks';
-import apolloClient from './apollo';
+import { getClient } from './apollo';
+import { setItem } from './helpers/common/storageHelper';
+import Shell from './components/Shell';
 
 const initialState = {
   firebase: null,
@@ -25,20 +27,15 @@ class RootElement extends React.Component {
 
     Promise.all([app, auth, analytics]).then((values) => {
       const firebase = getFirebase(values[0]);
-      this.setState({ firebase });
 
       firebase.analytics();
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
-          this.setState({ user: null });
+          this.setState({ firebase, user: null });
         } else {
-          this.setState({ user });
+          this.setState({ firebase, user });
 
-          user.getIdToken().then((token) => {
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('token', token);
-            }
-          });
+          user.getIdToken().then((token) => setItem('token', token));
         }
       });
     });
@@ -53,7 +50,7 @@ class RootElement extends React.Component {
 
     return (
       <FirebaseContext.Provider value={{ firebase, user }}>
-        <ApolloProvider client={apolloClient}>
+        <ApolloProvider client={getClient({ firebase, user })}>
           <ErrorBoundary>{this.props.children}</ErrorBoundary>
         </ApolloProvider>
       </FirebaseContext.Provider>
@@ -72,3 +69,7 @@ export const withFirebase = (Component) => (props) => (
 export const wrapRootElement = ({ element }) => (
   <RootElement>{element}</RootElement>
 );
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Shell {...props}>{element}</Shell>;
+};
