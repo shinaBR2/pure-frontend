@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from './ErrorBoundary';
 import getFirebase from './firebase';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { getClient } from './apollo';
@@ -22,10 +23,12 @@ class RootElement extends React.Component {
   componentDidMount() {
     const app = import('firebase/app');
     const auth = import('firebase/auth');
+    const analytics = import('firebase/analytics');
 
-    Promise.all([app, auth]).then((values) => {
+    Promise.all([app, auth, analytics]).then((values) => {
       const firebase = getFirebase(values[0]);
 
+      firebase.analytics();
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
           this.setState({ firebase, user: null });
@@ -40,10 +43,15 @@ class RootElement extends React.Component {
 
   render = () => {
     const { firebase, user } = this.state;
+    if (!firebase) {
+      // For sure all thing need to be render only on client side
+      return null;
+    }
+
     return (
       <FirebaseContext.Provider value={{ firebase, user }}>
         <ApolloProvider client={getClient({ firebase, user })}>
-          {this.props.children}
+          <ErrorBoundary>{this.props.children}</ErrorBoundary>
         </ApolloProvider>
       </FirebaseContext.Provider>
     );
