@@ -1,7 +1,11 @@
 import ApolloClient from 'apollo-boost';
 import fetch from 'isomorphic-fetch';
 import { getItem } from './helpers/common/storageHelper';
-// import { print } from 'graphql/language/printer';
+import { print } from 'graphql/language/printer';
+import {
+  captureGraphQLException,
+  captureNetworkException
+} from './helpers/tracking/sentryHelper';
 // import { onSignOut } from './firebase';
 
 const request = async (operation) => {
@@ -12,20 +16,27 @@ const request = async (operation) => {
     }
   });
 };
-const onError = ({ firebase }) => ({
+
+/**
+ * Reference here
+ * https://getsentry.github.io/sentry-javascript/classes/core.baseclient.html#captureexception
+ */
+const onError = ({ firebase, user }) => ({
   graphQLErrors,
-  networkError
-  // operation
+  networkError,
+  operation
 }) => {
-  // const query = print(operation.query);
+  const query = print(operation.query);
 
   if (graphQLErrors) {
-    // TODO
-    // Capture error
+    captureGraphQLException({
+      user,
+      query,
+      graphQLErrors
+    });
   }
   if (networkError) {
-    // TODO
-    // Capture error
+    captureNetworkException(networkError);
 
     if (firebase) {
       // TODO
