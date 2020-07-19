@@ -1,4 +1,3 @@
-
 # Pure Frontend Project
 
 This is a small project to demonstrate how to build a powerful but totally on frontend side with almost basic features.
@@ -16,11 +15,6 @@ This project works perfectly when using [Hasura](https://hasura.io/) as a backen
 
 - Use Firebase with Gastby. Forget everything about SSR Gatsby build issue.
 - Use Apollo Client with Gatsby and Firebase, which support **update Firebase user token whenever it changes**.
-
-## View demo
-
-- [Deploy to Heroku](link).
-- [Deploy to Netlify](link).
 
 ## Structure Explaination
 
@@ -49,11 +43,13 @@ This project works perfectly when using [Hasura](https://hasura.io/) as a backen
 ```
 
 There are some important files are:
-+ `src/root.js`: this is where we should start from, wrap all React inside a Provider via React Context with included Firebase and Apollo Client. `wrapRootElement` of Gatsby would be defined here, too.
-+ `src/firebase.js`: this is the firebase magic, resolve all SSR issue with Firebase in Gatsby.
-+ `src/apollo.js`: this is Apollo `client` we need for `Apollo Provider`, resolve Firebase user token issue here.
+
+- `src/root.js`: this is where we should start from, wrap all React inside a Provider via React Context with included Firebase and Apollo Client. `wrapRootElement` of Gatsby would be defined here, too.
+- `src/firebase.js`: this is the firebase magic, resolve all SSR issue with Firebase in Gatsby.
+- `src/apollo.js`: this is Apollo `client` we need for `Apollo Provider`, resolve Firebase user token issue here.
 
 Other structured folder:
+
 - `src/helpers`: where all app logic comes from.
 - `src/page`: Gatsby's default page folder for all static pages.
 - `src/translations`: contains all JSON files for multiple language site.
@@ -62,5 +58,10 @@ Other structured folder:
 - `src/containers`: all containers in React, stateful.
 - `src/components`: all **STATELESS** React components.
 
+## What you should do first
+
+- Change your information inside `package.json` file.
+
 ## Feedback
+
 Please feel free to have any feedback. I am always keep moving forward to improve this project.
