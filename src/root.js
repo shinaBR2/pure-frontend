@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from './ErrorBoundary';
 import getFirebase from './firebase';
 import { ApolloProvider } from '@apollo/react-hooks';
 import apolloClient from './apollo';
@@ -53,7 +54,7 @@ class RootElement extends React.Component {
     return (
       <FirebaseContext.Provider value={{ firebase, user }}>
         <ApolloProvider client={apolloClient}>
-          {this.props.children}
+          <ErrorBoundary>{this.props.children}</ErrorBoundary>
         </ApolloProvider>
       </FirebaseContext.Provider>
     );
