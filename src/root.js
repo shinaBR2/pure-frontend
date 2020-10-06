@@ -69,3 +69,8 @@ export const wrapRootElement = ({ element }) => (
 export const wrapPageElement = ({ element, props }) => {
   return <Shell {...props}>{element}</Shell>;
 };
+
+
+export const testFunc = () => {
+  console.log('testFunc');
+}

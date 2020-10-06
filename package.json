@@ -1,5 +1,5 @@
 {
-  "name": "pure-frontend",
+  "name": "@shinabr2/pure-frontend",
   "version": "1.0.0",
   "description": "Powerful project with just pure frontend techniques.",
   "main": "index.js",
@@ -68,5 +68,8 @@
     "eslint-plugin-react": "^7.19.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "prettier": "^2.0.5"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
